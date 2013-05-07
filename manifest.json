@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "Cruisify",
+  "description": "Personalize and Tom Cruisify the IMDB ratings.",
+  "version": "1.0",
+
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://www.imdb.com/title/*"],
+      "css": ["css/style.css"],
+      "js": ["js/jquery.min.js", "js/rater.js"]
+    }
+  ],
+  "background": { "scripts": ["js/jquery.min.js", "js/background.js"], "persistent": false },
+  "options_page": "html/options.html",
+  "browser_action": {
+    "default_title": "Cruisify",
+    "default_icon": "img/icon19.png",
+    "default_popup": "html/options.html"
+  },
+  "web_accessible_resources": [
+    "img/green.png"
+  ]
+}
