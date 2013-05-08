@@ -1,15 +1,21 @@
 <html>
-	<head><title>Cruisify</title></head>
-	<body>
+	<head>
+		<title>Cruisify</title>
+		<link rel="stylesheet" type="text/css" href="../css/style.css" />
+	</head>
+	<body id="cruisify">
 		Love Genre <input type="text" id="love"></input><br>
 		Like Genre <input type="text" id="like"></input><br>
 		Hate Genre <input type="text" id="hate"></input><br>
 		Cruisify
-		<input type="radio" id="yes" name="cruisify" checked="checked">Y
-		<input type="radio" id="no" name="cruisify">N
+		<input type="radio" id="yes" name="cruisify" checked="checked">Yes
+		<input type="radio" id="no" name="cruisify">No
 		<br>
-		<div id="status"></div>
+		Secret mode
+		<input type="checkbox" id="secret">
+		<br>
 		<button id="save">Save</button>
 		<script src="../js/options.js"></script>
+		<small id="status"></small>
 	</body>
 </html>

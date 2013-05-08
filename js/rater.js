@@ -1,7 +1,8 @@
 /*global $, chrome */
 (function () {
     'use strict';
-    var rateCont = $('.star-box-giga-star');
+    var rateCont = $('.star-box-giga-star'),
+        secondRateCont = $('[itemprop="ratingValue"]');
     chrome.extension.sendMessage({method: "getLocalStorage"}, function (ls) {
         if (!ls) {
             return;
@@ -23,25 +24,29 @@
         } else {
             add = 0;
             if (ls.love && $.inArray(ls.love.toLowerCase(), genres) !== -1) {
-                add += 2 + Math.random();
+                add += 3;
             }
             if (ls.like && $.inArray(ls.like.toLowerCase(), genres) !== -1) {
-                add += Math.random();
+                add += 1;
             }
             if (ls.hate && $.inArray(ls.hate.toLowerCase(), genres) !== -1) {
-                add -= 1 + Math.random();
+                add -= 2;
             }
         }
-        if (add > 0) {
+        if (add !== 0) {
             add = parseFloat(rateCont.html().replace(',', '.'), 10) + add;
             add = Math.round(add * 10) / 10;
             add = Math.min(10, add).toString();
-            rateCont.html(add.replace('.', ','));
-            rateCont.css({
-                'background-position': '0',
-                'margin-right': '5px',
-                'padding': '0'
-            }).addClass('updated').removeClass('titlePageSprite');
+            add = add.replace('.', ',');
+            rateCont.html(add);
+            secondRateCont.html(add);
+            if (!parseInt(ls.secret, 10)) {
+                rateCont.css({
+                    'background-position': '0',
+                    'margin-right': '5px',
+                    'padding': '0'
+                }).addClass('updated').removeClass('titlePageSprite');
+            }
         }
     });
 }());

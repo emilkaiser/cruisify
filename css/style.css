@@ -1,3 +1,7 @@
 .updated {
 	background-image:url('chrome-extension://__MSG_@@extension_id__/img/green.png');
 }
+#cruisify {
+	width: 150px;
+	height: 200px;
+}

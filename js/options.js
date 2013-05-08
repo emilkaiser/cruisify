@@ -7,15 +7,16 @@
         } else if (document.getElementById('no').checked) {
             localStorage.cruisify = 0;
         }
+        localStorage.secret = document.getElementById("secret").checked ? 1 : 0;
         localStorage.love = document.getElementById("love").value || "";
         localStorage.like = document.getElementById("like").value || "";
         localStorage.hate = document.getElementById("hate").value || "";
 
         var status = document.getElementById("status");
-        status.innerHTML = "Options Saved.";
+        status.innerHTML = "Options saved!";
         setTimeout(function () {
             status.innerHTML = "";
-        }, 750);
+        }, 1250);
     }
 
     function restore() {
@@ -25,6 +26,7 @@
             document.getElementById('yes').checked = false;
             document.getElementById('no').checked = true;
         }
+        document.getElementById("secret").checked = parseInt(localStorage.secret, 10);
         document.getElementById("love").value = localStorage.love || "";
         document.getElementById("like").value = localStorage.like || "";
         document.getElementById("hate").value = localStorage.hate || "";
