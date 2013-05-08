@@ -19,10 +19,7 @@
             genres.push($(this).html().toLowerCase());
         });
         if (parseInt(ls.cruisify, 10) && cruise) {
-            rateCont.html("10");
-            rateCont.css({
-                'background-position': '0'
-            }).addClass('updated').removeClass('titlePageSprite');
+            add = 10;
         } else {
             add = 0;
             if (ls.love && $.inArray(ls.love.toLowerCase(), genres) !== -1) {
@@ -34,7 +31,11 @@
             if (ls.hate && $.inArray(ls.hate.toLowerCase(), genres) !== -1) {
                 add -= 1 + Math.random();
             }
-            add = Math.min(10, (parseFloat(rateCont.html().replace(',', '.'), 10) + Math.round(add * 10) / 10)).toString();
+        }
+        if (add > 0) {
+            add = parseFloat(rateCont.html().replace(',', '.'), 10) + add;
+            add = Math.round(add * 10) / 10;
+            add = Math.min(10, add).toString();
             rateCont.html(add.replace('.', ','));
             rateCont.css({
                 'background-position': '0',
